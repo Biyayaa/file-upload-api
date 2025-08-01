@@ -1,12 +1,5 @@
 const cloudinary = require('../config/cloudinary');
 
-
-console.log("Cloudinary ENV Vars:", {
-  CLOUD_NAME: process.env.CLOUD_NAME,
-  API_KEY: process.env.CLOUD_API_KEY,
-  API_SECRET: process.env.CLOUD_API_SECRET
-});
-
 // Helper function to upload a single file buffer
 const uploadToCloudinary = async (fileBuffer, filename) => {
   return new Promise((resolve, reject) => {
