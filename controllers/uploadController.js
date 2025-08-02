@@ -3,7 +3,7 @@ const cloudinary = require('../config/cloudinary');
 // Helper function to upload a single file buffer
 const uploadToCloudinary = async (fileBuffer, filename) => {
   return new Promise((resolve, reject) => {
-    cloudinary.uploader.upload_stream({ public_id: filename }, (error, result) => {
+    cloudinary.uploader.upload_stream({ public_id: filename, resource_type: 'raw' }, (error, result) => {
       if (error) reject(error);
       else resolve(result);
     }).end(fileBuffer);
@@ -18,6 +18,8 @@ exports.uploadSingle = async (req, res) => {
     res.status(500).json({ error: 'Upload failed', details: err.message });
   }
 };
+
+
 
 exports.uploadMultiple = async (req, res) => {
   try {
